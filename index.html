@@ -176,6 +176,78 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 .aicon{font-size:32px;margin-bottom:8px;}
 .aname{font-family:'Baloo 2',cursive;font-size:13px;font-weight:700;margin-bottom:4px;}
 .adesc{font-size:11px;color:var(--text-light);}
+
+/* ── Dark mode ─────────────────────────────── */
+body.dark{--bg:#12121f;--text:#e2e2f0;--text-light:#8b8ba7;--border:#252540;}
+body.dark .scard,body.dark .subj-card,body.dark .lcard,body.dark .badge,
+body.dark .qzcard,body.dark .pscard,body.dark .rstat,body.dark .achitem,
+body.dark .qcard{background:#1e1e38;border-color:#252540;}
+body.dark .vhdr{background:#1e1e38;border-color:#252540;}
+body.dark .obtn{background:#1e1e38;border-color:#252540;color:var(--text);}
+body.dark .btn-sec{background:#1e1e38;color:var(--text);border-color:#252540;}
+body.dark .rcontent{background:#1e1e38;color:var(--text);}
+body.dark .vocab-item{background:#252540;}body.dark .plitem{background:#252540;}
+body.dark .back{background:#1e1e38;border-color:#252540;color:var(--text);}
+body.dark .modal{background:#1e1e38;}
+body.dark .modal input{background:#12121f;border-color:#252540;color:var(--text);}
+body.dark .modal p{color:var(--text-light);}
+body.dark .highlight-box,body.dark .info-box,body.dark .success-box,body.dark .important-box{filter:brightness(.85);}
+body{transition:background .3s,color .3s;}
+
+/* ── Dark toggle btn ───────────────────────── */
+.dark-toggle{margin:4px 12px 12px;background:rgba(255,255,255,.08);border:none;border-radius:12px;padding:10px 14px;color:rgba(255,255,255,.7);font-family:'Nunito',sans-serif;font-weight:600;font-size:13px;cursor:pointer;text-align:left;width:calc(100% - 24px);display:flex;align-items:center;gap:10px;transition:background .2s;}
+.dark-toggle:hover{background:rgba(255,255,255,.14);color:#fff;}
+
+/* ── Hamburger / mobile sidebar ────────────── */
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--primary);border:none;border-radius:12px;width:42px;height:42px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 12px rgba(255,107,53,.4);}
+.hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;}
+.sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99;}
+
+/* ── Quiz timer ─────────────────────────────── */
+.qtimer-row{display:flex;justify-content:center;margin-bottom:20px;}
+.qtimer{position:relative;width:60px;height:60px;}
+.tprog{fill:none;stroke:var(--primary);stroke-width:5;stroke-linecap:round;transform-origin:30px 30px;transform:rotate(-90deg);transition:stroke-dashoffset 1s linear,stroke .3s;}
+.tprog.urgent{stroke:#ef4444;}
+.qtimer-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-weight:800;font-size:17px;color:var(--primary);}
+.qtimer-num.urgent{color:#ef4444;}
+
+/* ── Name modal ─────────────────────────────── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;display:flex;align-items:center;justify-content:center;}
+.modal{background:#fff;border-radius:24px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.25);color:var(--text);}
+.modal h2{font-family:'Baloo 2',cursive;font-size:26px;font-weight:800;margin-bottom:8px;}
+.modal p{color:var(--text-light);margin-bottom:24px;line-height:1.6;font-size:15px;}
+.modal input{width:100%;border:2px solid var(--border);border-radius:12px;padding:13px 16px;font-size:16px;font-family:'Nunito',sans-serif;outline:none;margin-bottom:16px;background:var(--bg);color:var(--text);}
+.modal input:focus{border-color:var(--primary);}
+
+/* ── Toast ──────────────────────────────────── */
+.toast{position:fixed;bottom:28px;right:28px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 8px 32px rgba(0,0,0,.3);z-index:500;font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(90px);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);max-width:320px;pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ── Responsive ─────────────────────────────── */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .sidebar{transform:translateX(-100%);transition:transform .3s;}
+  .sidebar.open{transform:translateX(0);}
+  .sidebar-overlay.open{display:block;}
+  .main{margin-left:0;}
+  .dhdr{padding:64px 20px 60px;}
+  .dcontent,.lcon,.rcon,.qcon,.pcon{padding:20px;}
+  .vhdr{padding:16px 20px;}
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .subj-grid{grid-template-columns:1fr;}
+  .lgrid{grid-template-columns:1fr;}
+  .allq-grid{grid-template-columns:repeat(2,1fr);padding:20px;}
+  .ogrid{grid-template-columns:1fr;}
+  .achgrid{grid-template-columns:repeat(2,1fr);}
+  .pllist{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .allq-grid{grid-template-columns:1fr;}
+  .vocab-grid{grid-template-columns:1fr;}
+}
+/* ── Sidebar name clickable ─────────────────── */
+.uname{cursor:pointer;}.uname:hover{color:var(--accent);}
 </style>
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -186,44 +258,48 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 </script>
 </head>
 <body>
-<nav class="sidebar">
+<button class="hamburger" onclick="openSidebar()" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+<nav class="sidebar" id="sidebar">
   <div class="logo">
     <div class="logo-icon">&#128218;</div>
     <div><div class="logo-txt">VidyaPath</div><div class="logo-sub">Grade 6 &middot; Sri Lanka</div></div>
   </div>
   <div class="ucard">
     <div class="uavatar">&#129491;</div>
-    <div class="uname">Student</div>
+    <div class="uname" id="uname" onclick="showNameModal(false)" title="Click to change name">Student &#9998;</div>
     <div class="ugrade">Grade 6 &middot; Sri Lanka</div>
     <div class="ustats">
       <div class="spill"><span class="v" id="sXP">0</span><span class="l">XP</span></div>
-      <div class="spill"><span class="v" id="sST">3</span><span class="l">Streak</span></div>
+
+      <div class="spill"><span class="v" id="sST">0</span><span class="l">Streak</span></div>
       <div class="spill"><span class="v" id="sDN">0</span><span class="l">Done</span></div>
     </div>
   </div>
   <div class="nsec">
     <div class="nlbl">Menu</div>
-    <div class="ni active" id="nn-dashboard" onclick="goDash()"><span class="ic">&#127968;</span> Dashboard</div>
-    <div class="ni" id="nn-quizzes"  onclick="goQuizzes()"><span class="ic">&#129504;</span> All Quizzes</div>
-    <div class="ni" id="nn-progress" onclick="goProgress()"><span class="ic">&#128200;</span> Progress</div>
+    <div class="ni active" id="nn-dashboard" onclick="navGo(goDash)"><span class="ic">&#127968;</span> Dashboard</div>
+    <div class="ni" id="nn-quizzes"  onclick="navGo(goQuizzes)"><span class="ic">&#129504;</span> All Quizzes</div>
+    <div class="ni" id="nn-progress" onclick="navGo(goProgress)"><span class="ic">&#128200;</span> Progress</div>
   </div>
   <div class="nsec">
     <div class="nlbl">Subjects</div>
-    <div class="ni m" id="nn-math"    onclick="goLessons('math')"><span class="ic">&#128290;</span> Mathematics</div>
-    <div class="ni s" id="nn-science" onclick="goLessons('science')"><span class="ic">&#128300;</span> Science</div>
-    <div class="ni h" id="nn-history" onclick="goLessons('history')"><span class="ic">&#127963;</span> History</div>
+    <div class="ni m" id="nn-math"    onclick="navGo(function(){goLessons('math')})"><span class="ic">&#128290;</span> Mathematics</div>
+    <div class="ni s" id="nn-science" onclick="navGo(function(){goLessons('science')})"><span class="ic">&#128300;</span> Science</div>
+    <div class="ni h" id="nn-history" onclick="navGo(function(){goLessons('history')})"><span class="ic">&#127963;</span> History</div>
   </div>
+  <button class="dark-toggle" id="dark-toggle-btn" onclick="toggleDark()">&#127769; Dark Mode</button>
 </nav>
 <main class="main">
 <div class="view active" id="view-dashboard">
   <div class="dhdr">
-    <div class="dhdr-title">Hello, Student! &#128075;</div>
+    <div class="dhdr-title" id="dhdr-greeting">Hello, Student! &#128075;</div>
     <div class="dhdr-sub">Ready to learn something amazing today?</div>
   </div>
   <div class="dcontent">
     <div class="stats-row">
       <div class="scard"><div class="scard-icon" style="background:rgba(255,107,53,.15)">&#11088;</div><div><div class="num" id="dXP">0</div><div class="lbl">Total XP</div></div></div>
-      <div class="scard"><div class="scard-icon" style="background:rgba(255,209,102,.2)">&#128293;</div><div><div class="num" id="dST">3</div><div class="lbl">Day Streak</div></div></div>
+      <div class="scard"><div class="scard-icon" style="background:rgba(255,209,102,.2)">&#128293;</div><div><div class="num" id="dST">0</div><div class="lbl">Day Streak</div></div></div>
       <div class="scard"><div class="scard-icon" style="background:rgba(6,214,160,.15)">&#9989;</div><div><div class="num" id="dLN">0</div><div class="lbl">Lessons Done</div></div></div>
       <div class="scard"><div class="scard-icon" style="background:rgba(17,138,178,.15)">&#127942;</div><div><div class="num" id="dBG">0</div><div class="lbl">Badges</div></div></div>
     </div>
@@ -278,6 +354,15 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
     <div><div class="vtitle" id="vt-quiz">Quiz</div><div class="vsub">Answer carefully</div></div>
   </div>
   <div class="qcon">
+    <div class="qtimer-row">
+      <div class="qtimer">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="25" fill="none" stroke="var(--border)" stroke-width="5"/>
+          <circle class="tprog" id="tprog" cx="30" cy="30" r="25" stroke-dasharray="157.08" stroke-dashoffset="0"/>
+        </svg>
+        <div class="qtimer-num" id="tnum">30</div>
+      </div>
+    </div>
     <div class="qpbar"><div class="qpfill" id="qpfill" style="width:0%"></div></div>
     <div class="qptxt"><span id="qnum">Q 1 of 5</span><span id="qscore">Score: 0</span></div>
     <div class="qcard" id="qcard"></div>
@@ -316,6 +401,18 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 </div>
 </main>
 
+<!-- Name modal -->
+<div class="modal-bg" id="name-modal" style="display:none">
+  <div class="modal">
+    <div style="font-size:52px;margin-bottom:12px">&#127891;</div>
+    <h2 id="modal-title">Welcome to VidyaPath!</h2>
+    <p id="modal-desc">What should we call you?</p>
+    <input type="text" id="name-input" placeholder="Enter your name..." maxlength="30" onkeydown="if(event.key==='Enter')saveName()">
+    <button class="btn btn-p" style="width:100%;justify-content:center;font-size:15px" onclick="saveName()" id="modal-btn">Let&#39;s go! &#128640;</button>
+  </div>
+</div>
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 <!-- lesson content -->
 <div id="lc-math-1" style="display:none"><h3>What is a Set?</h3><p>A <strong>set</strong> is a well-defined collection of objects. Each object in a set is called an <strong>element</strong> or <strong>member</strong>.</p><div class="highlight-box">📌 A set must be <em>well-defined</em> — we can clearly say whether any object belongs or not.</div><h3>Notation</h3><p>Sets are named with capital letters and elements written inside curly braces { }.</p><div class="formula-box">A = {1, 2, 3, 4, 5}</div><p>We say <strong>1 ∈ A</strong> (1 is a member of A) and <strong>6 ∉ A</strong> (6 is not a member of A).</p><h3>Types of Sets</h3><div class="vocab-grid"><div class="vocab-item"><div class="vocab-term">Empty Set (∅)</div><div class="vocab-def">No elements. Written { } or ∅. Example: months with 32 days.</div></div><div class="vocab-item"><div class="vocab-term">Finite Set</div><div class="vocab-def">Countable elements. Example: {2,4,6,8,10}</div></div><div class="vocab-item"><div class="vocab-term">Infinite Set</div><div class="vocab-def">Goes on forever. Example: {1,2,3,4,...}</div></div><div class="vocab-item"><div class="vocab-term">Universal Set (U)</div><div class="vocab-def">Contains ALL elements being considered.</div></div></div><h3>Ways to Describe a Set</h3><p><strong>Roster Method:</strong> List all elements: B = {a, e, i, o, u}</p><p><strong>Description Method:</strong> <span class="info-box" style="display:inline">B = {vowels in English alphabet}</span></p><h3>Equal Sets</h3><div class="success-box">✅ {1,2,3} = {3,1,2} — Same elements, order does not matter!</div><div class="important-box"><div class="imp-title">⚡ Key Points</div><div class="key-fact"><div class="dot"></div><div>Elements never repeated in a set</div></div><div class="key-fact"><div class="dot"></div><div>Order of elements does not matter</div></div><div class="key-fact"><div class="dot"></div><div>∈ means "is a member of", ∉ means "is not a member of"</div></div></div></div>
 <div id="lc-math-2" style="display:none"><h3>What is a Fraction?</h3><p>A fraction represents a <strong>part of a whole</strong>.</p><div class="formula-box">Numerator / Denominator</div><p>The <strong>numerator</strong> (top) tells how many parts we have. The <strong>denominator</strong> (bottom) tells how many equal parts the whole is divided into.</p><h3>Types of Fractions</h3><div class="vocab-grid"><div class="vocab-item"><div class="vocab-term">Proper Fraction</div><div class="vocab-def">Numerator less than denominator. eg: 3/4</div></div><div class="vocab-item"><div class="vocab-term">Improper Fraction</div><div class="vocab-def">Numerator ≥ denominator. eg: 7/4</div></div><div class="vocab-item"><div class="vocab-term">Mixed Number</div><div class="vocab-def">Whole number + fraction. eg: 2½</div></div><div class="vocab-item"><div class="vocab-term">Like Fractions</div><div class="vocab-def">Same denominator. eg: 1/5 and 3/5</div></div></div><h3>Adding Like Fractions</h3><div class="info-box">Same denominators — just add numerators!<br><strong>1/7 + 3/7 = 4/7</strong></div><h3>Adding Unlike Fractions</h3><div class="highlight-box">Steps: 1. Find LCD (Lowest Common Denominator)<br>2. Convert each fraction to LCD<br>3. Add numerators<br>4. Simplify</div><p><strong>Example:</strong> 1/3 + 1/4. LCD = 12. So 4/12 + 3/12 = <strong>7/12</strong></p><h3>Subtracting Fractions</h3><div class="success-box"><strong>5/6 – 1/4:</strong> LCD=12. 10/12 – 3/12 = <strong>7/12</strong></div><div class="important-box"><div class="imp-title">⚡ Key Rules</div><div class="key-fact"><div class="dot"></div><div>Always simplify your answer</div></div><div class="key-fact"><div class="dot"></div><div>LCD = LCM of the denominators</div></div><div class="key-fact"><div class="dot"></div><div>Convert improper fractions to mixed numbers when needed</div></div></div></div>
@@ -332,7 +429,152 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);disp
 <div id="lc-hist-4" style="display:none"><h3>The First Settlers</h3><p>About <strong>125,000 years ago</strong>, people first arrived in Sri Lanka from a distant country — our earliest ancestors.</p><div class="highlight-box">First settlers:<br>• Lived by HUNTING and GATHERING wild food<br>• Lived in CAVES during rainy seasons<br>• Used tools made of STONE, bones, and wood<br>• This early period is called the <strong>STONE AGE</strong></div><h3>Important Cave Sites</h3><div class="vocab-grid"><div class="vocab-item"><div class="vocab-term">🦇 Pahiyangala Cave</div><div class="vocab-def">Key ancient cave site. Artifacts including oyster shell pendants found here.</div></div><div class="vocab-item"><div class="vocab-term">🏔️ Kithulgala Cave</div><div class="vocab-def">Important dwelling used in the hunting era.</div></div></div><h3>Progress Before Prince Vijaya (around 2,400 BC)</h3><div class="key-fact"><div class="dot"></div><div>Started FARMING on hill plateaus</div></div><div class="key-fact"><div class="dot"></div><div>Discovered how to produce IRON (~4,000 years ago)</div></div><div class="key-fact"><div class="dot"></div><div>Made CLAY POTS and urns</div></div><div class="key-fact"><div class="dot"></div><div>Performed FUNERAL RITES — erected tombs for the dead</div></div><h3>Prince Vijaya's Arrival (544 BC)</h3><p>According to the <strong>Mahawamsa</strong>, Prince Vijaya and <strong>700 followers</strong> arrived from India and landed at <strong>Thambapanni</strong> on the western coast around <strong>544 BC</strong>.</p><div class="person-card"><div class="person-name">👑 Prince Vijaya's Story</div>Three groups lived here when Vijaya arrived: <strong>Yakka, Naga, and Deva</strong> tribes. A Yakka woman named <strong>Kuweni</strong> (who was spinning cotton) caught Vijaya's followers. He found her, married her, and she helped him become King. His followers built villages including <strong>Upatissa Gama</strong> and <strong>Anuradhagama</strong>.</div></div>
 <div id="lc-hist-5" style="display:none"><h3>Introduction</h3><p>Sri Lanka was ruled by brave and wise kings for about 2,000 years. Sailors knew our island as Sihaladeepa, Taprobane, Ceylan, and Serendib. Our kings worked constantly for the welfare of the people.</p><div class="person-card"><div class="person-name">🏰 King Pandukabhaya</div><p>Developed <strong>Anuradhagama</strong> into the great city of <strong>Anuradhapura</strong>. Built city gates, roads, ponds, gardens, a hospital, and places of worship for all faiths. Built the first tank near a city — <strong>Abhaya Wewa</strong> (now Basawakkulama tank). Ruled for <strong>70 years</strong>.</p></div><div class="person-card"><div class="person-name">🌳 King Devanampiyatissa</div><p>During his reign, <strong>Arahat Mahinda Thero</strong> (son of Emperor Ashoka) brought <strong>Buddhism</strong> to Sri Lanka. The king embraced Buddhism and built:<br>• <strong>Thuparamaya</strong> — first stupa in Sri Lanka (bell-shaped/Ghantakara design)<br>• <strong>Mahamewuna Garden</strong> and Maha Vihara<br><br>Nun <strong>Sangamitta Theri</strong> brought the sapling of <strong>Sri Maha Bodhi</strong> (sacred Bo tree) from India — planted in Mahamewuna Garden.</p></div><div class="person-card"><div class="person-name">⚔️ King Dutugemunu</div><p>Real name: Gamini Abhaya. Defeated <strong>King Elara</strong> (righteous Chola king who ruled Anuradhapura 44 years). United the country. Built <strong>Ruwanweliseya</strong> (Maha Tupa) — 300ft tall, base diameter 298ft. Supported by <strong>Ten Great Giants (Dasa Maha Yodhayo)</strong> and war elephant <strong>Kandula</strong>.</p></div><div class="person-card"><div class="person-name">📖 King Valagamba</div><p>Built <strong>Abhayagiri Stupa</strong> (350ft tall, base 355ft). Arranged for the <strong>Thripitaka</strong> (Buddhist scriptures) to be <strong>written down for the first time</strong> at <strong>Aluviharaya temple, Mathale</strong> — previously preserved only by memorization. Wife: Queen Soma Devi.</p></div><div class="person-card"><div class="person-name">💧 King Vasabha — Lambakarna Dynasty</div><p>Built <strong>11 large tanks</strong> and 12 canals including the <strong>Elahera canal</strong> (30 miles long). The <strong>Vallipuram gold plate</strong> was written during his rule — records a minister building a temple in Jaffna. Ruled <strong>44 years</strong>.</p></div><div class="person-card"><div class="person-name">🏊 King Mahasen</div><p>Built <strong>16 tanks</strong> including famous <strong>Minneriya tank</strong> (1¼ mile bund, 4,670 acres). Built <strong>Jethawanaramaya</strong> — <strong>largest brick stupa in the world</strong> (400ft tall, base 370ft). Worshipped today as <strong>"Minneri Deviyo"</strong>. Ruled 27 years.</p></div><div class="person-card"><div class="person-name">🌊 King Dhathusena — Maurya Dynasty</div><p>Built <strong>Kala Wewa</strong> and the remarkable <strong>Yodha Ela (Jaya Ganga)</strong> — a canal <strong>54 miles long</strong> connecting Kala Wewa to Tisa Wewa, with a gradient of only 6 inches per mile. Built 18 large and 18 small tanks. Ruled 18 years.</p></div><div class="important-box"><div class="imp-title">⚡ Quick Reference</div><div class="key-fact"><div class="dot"></div><div><strong>First tank near city:</strong> Pandukabhaya → Abhaya Wewa</div></div><div class="key-fact"><div class="dot"></div><div><strong>Buddhism arrived:</strong> Devanampiyatissa (Arahat Mahinda)</div></div><div class="key-fact"><div class="dot"></div><div><strong>Thripitaka written:</strong> Valagamba → Aluviharaya, Mathale</div></div><div class="key-fact"><div class="dot"></div><div><strong>Largest brick stupa:</strong> Jethawanaramaya (King Mahasen)</div></div><div class="key-fact"><div class="dot"></div><div><strong>Longest canal:</strong> Yodha Ela / Jaya Ganga (Dhathusena) — 54 miles</div></div></div></div>
 <script>
-var st={xp:0,streak:3,done:new Set(),qhist:[],csub:null,clidx:null,cquiz:null,cq:0,score:0,answered:false};
+/* ── State ─────────────────────────────────────────────────────── */
+var st={xp:0,streak:0,lastDate:null,done:new Set(),qhist:[],earnedAchs:[],name:'',dark:false,csub:null,clidx:null,cquiz:null,cq:0,score:0,answered:false};
+
+function saveState(){
+  try{
+    localStorage.setItem('vidyapath_st',JSON.stringify({
+      xp:st.xp,streak:st.streak,lastDate:st.lastDate,
+      done:Array.from(st.done),qhist:st.qhist,earnedAchs:st.earnedAchs,
+      name:st.name,dark:st.dark
+    }));
+  }catch(e){}
+}
+
+function loadState(){
+  try{
+    var raw=localStorage.getItem('vidyapath_st');
+    if(!raw) return false;
+    var s=JSON.parse(raw);
+    st.xp=s.xp||0; st.streak=s.streak||0; st.lastDate=s.lastDate||null;
+    st.done=new Set(s.done||[]); st.qhist=s.qhist||[];
+    st.earnedAchs=s.earnedAchs||[]; st.name=s.name||''; st.dark=!!s.dark;
+    return true;
+  }catch(e){return false;}
+}
+
+/* ── Streak ─────────────────────────────────────────────────────── */
+function updateStreak(){
+  var today=new Date().toDateString();
+  if(!st.lastDate){st.streak=1;st.lastDate=today;}
+  else if(st.lastDate===today){/* same day */}
+  else{
+    var prev=new Date(st.lastDate); var now=new Date(today);
+    var diff=Math.round((now-prev)/(86400000));
+    st.streak=(diff===1)?st.streak+1:1;
+    st.lastDate=today;
+  }
+  saveState();
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────── */
+function toggleDark(){
+  st.dark=!st.dark;
+  document.body.classList.toggle('dark',st.dark);
+  var btn=document.getElementById('dark-toggle-btn');
+  if(btn) btn.innerHTML=st.dark?'&#9728; Light Mode':'&#127769; Dark Mode';
+  saveState();
+}
+
+/* ── Mobile sidebar ─────────────────────────────────────────────── */
+function openSidebar(){
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebar-overlay').classList.add('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
+}
+function navGo(fn){closeSidebar();fn();}
+
+/* ── Toast ──────────────────────────────────────────────────────── */
+var _toastTmr=null;
+function showToast(icon,msg){
+  var t=document.getElementById('toast');
+  t.innerHTML=icon+' '+msg;
+  t.classList.add('show');
+  if(_toastTmr) clearTimeout(_toastTmr);
+  _toastTmr=setTimeout(function(){t.classList.remove('show');},3200);
+}
+
+/* ── Achievements ───────────────────────────────────────────────── */
+function checkAchs(){
+  var prev=new Set(st.earnedAchs); var newOnes=[];
+  for(var i=0;i<ACHS.length;i++){
+    if(ACHS[i].fn(st)&&!prev.has(ACHS[i].id)){
+      st.earnedAchs.push(ACHS[i].id); newOnes.push(ACHS[i]);
+    }
+  }
+  if(newOnes.length){
+    var a=newOnes[0];
+    setTimeout(function(){showToast(a.ic,'Badge unlocked: '+a.nm+'!');},600);
+  }
+}
+
+/* ── Name modal ─────────────────────────────────────────────────── */
+function showNameModal(isFirst){
+  var m=document.getElementById('name-modal');
+  document.getElementById('modal-title').textContent=isFirst?'Welcome to VidyaPath!':'Change Your Name';
+  document.getElementById('modal-desc').textContent=isFirst?'What should we call you?':'Enter your new name below.';
+  document.getElementById('modal-btn').innerHTML=isFirst?"Let&#39;s go! &#128640;":'Save';
+  document.getElementById('name-input').value=isFirst?'':st.name;
+  m.style.display='flex';
+  setTimeout(function(){document.getElementById('name-input').focus();},100);
+}
+function saveName(){
+  var n=document.getElementById('name-input').value.trim();
+  if(!n) return;
+  st.name=n;
+  document.getElementById('name-modal').style.display='none';
+  document.getElementById('uname').textContent=n+' ✎';
+  document.getElementById('dhdr-greeting').textContent='Hello, '+n+'! 👋';
+  saveState();
+}
+
+/* ── Quiz timer ─────────────────────────────────────────────────── */
+var _timerInterval=null; var _timerLeft=30;
+var CIRC=157.08;
+
+function startTimer(){
+  stopTimer();
+  _timerLeft=30;
+  renderTimer();
+  _timerInterval=setInterval(function(){
+    _timerLeft--;
+    renderTimer();
+    if(_timerLeft<=0){
+      stopTimer();
+      timeUp();
+    }
+  },1000);
+}
+function stopTimer(){
+  if(_timerInterval){clearInterval(_timerInterval);_timerInterval=null;}
+}
+function renderTimer(){
+  var p=document.getElementById('tprog'); var n=document.getElementById('tnum');
+  if(!p||!n) return;
+  var offset=CIRC*(1-_timerLeft/30);
+  p.style.strokeDashoffset=offset;
+  n.textContent=_timerLeft;
+  if(_timerLeft<=10){p.classList.add('urgent');n.classList.add('urgent');}
+  else{p.classList.remove('urgent');n.classList.remove('urgent');}
+}
+function timeUp(){
+  if(st.answered) return;
+  st.answered=true;
+  var q=st.cquiz.qs[st.cq];
+  for(var i=0;i<q.opts.length;i++){
+    var b=document.getElementById('ob'+i); if(!b) continue;
+    b.disabled=true;
+    if(i===q.ans) b.classList.add('correct');
+  }
+  var ex=document.getElementById('exp');
+  if(ex){ex.style.display='block';ex.className='expbox wrong';ex.innerHTML='<strong>&#9200; Time\'s up!</strong> &mdash; The correct answer was highlighted.';}
+  var nb=document.getElementById('qnext'); if(nb) nb.style.display='inline-flex';
+  setTimeout(function(){nextQ();},1500);
+}
 var CUR={math:{name:"Mathematics",cls:"qm",lessons:[{id:"math-1",title:"Introduction to Sets",dur:"20 min",diff:"Easy",quiz:[{q:'Which symbol means "is a member of" a set?',opts:['∪','∩','∈','∉'],ans:2,exp:'∈ means "is a member of". For example, 3 ∈ {1,2,3} means 3 belongs to the set.'},
 {q:'A set with NO elements is called:',opts:['Universal Set','Empty Set','Finite Set','Infinite Set'],ans:1,exp:'An empty set has no elements. Written as { } or ∅.'},
 {q:'Which is an INFINITE set?',opts:['{1,2,3}','{ }','{vowels in English}','{natural numbers}'],ans:3,exp:'Natural numbers {1,2,3,...} go on forever — infinite set.'},
@@ -450,7 +692,10 @@ function goLesson(sub,idx){
   if(l.quiz&&l.quiz.length) nav+=" <button class=\"btn btn-g\" onclick=\"goQuiz('"+sub+"',"+idx+")\">&#129504; Take Quiz</button>";
   if(idx<s.lessons.length-1) nav+=" <button class=\"btn btn-p\" onclick=\"goLesson('"+sub+"',"+(idx+1)+")\">Next &#8594;</button>";
   document.getElementById("lnav").innerHTML=nav;
-  if(!st.done.has(l.id)){st.done.add(l.id);st.xp+=10;}
+  if(!st.done.has(l.id)){
+    st.done.add(l.id); st.xp+=10;
+    updateStreak(); checkAchs(); saveState();
+  }
 }
 
 function renderDash(){
@@ -460,6 +705,9 @@ function renderDash(){
   document.getElementById("sXP").textContent=st.xp;
   document.getElementById("sST").textContent=st.streak;
   document.getElementById("sDN").textContent=st.done.size;
+  var n=st.name||'Student';
+  document.getElementById("dhdr-greeting").textContent='Hello, '+n+'! 👋';
+  document.getElementById("uname").textContent=n+' ✎';
   var earned=0;
   for(var i=0;i<ACHS.length;i++){if(ACHS[i].fn(st))earned++;}
   document.getElementById("dBG").textContent=earned;
@@ -536,7 +784,7 @@ function goQuiz(sub,idx){
   st.cquiz={sub:sub,idx:idx,l:l,qs:l.quiz};
   st.cq=0; st.score=0; st.answered=false;
   document.getElementById("vt-quiz").textContent=l.title+" Quiz";
-  document.getElementById("back-quiz").onclick=function(){goLesson(sub,idx);};
+  document.getElementById("back-quiz").onclick=function(){stopTimer();goLesson(sub,idx);};
   showView("quiz"); renderQ();
 }
 function renderQ(){
@@ -554,9 +802,11 @@ function renderQ(){
   }
   h+="</div><div id=\"exp\" style=\"display:none\"></div>";
   document.getElementById("qcard").innerHTML=h;
+  startTimer();
 }
 function pickA(idx){
   if(st.answered) return;
+  stopTimer();
   st.answered=true;
   var q=st.cquiz.qs[st.cq];
   if(idx===q.ans) st.score++;
@@ -580,6 +830,7 @@ function showRes(){
   var tot=st.cquiz.qs.length; var pct=Math.round(st.score/tot*100);
   var xp=st.score*10+(pct===100?50:0); st.xp+=xp;
   st.qhist.push({lid:st.cquiz.l.id,sc:st.score,tot:tot,pct:pct,xp:xp});
+  checkAchs(); saveState();
   var c=document.getElementById("scircle");
   c.style.background="conic-gradient(var(--primary) "+Math.round(pct*3.6)+"deg, var(--border) 0deg)";
   document.getElementById("rscore").textContent=pct+"%";
@@ -597,7 +848,18 @@ function showRes(){
   document.getElementById("tohome").onclick=function(){goDash();};
   showView("results");
 }
-goDash();
-
+/* ── Init ───────────────────────────────────────────────────────── */
+(function(){
+  var hadSave=loadState();
+  if(st.dark){
+    document.body.classList.add('dark');
+    var btn=document.getElementById('dark-toggle-btn');
+    if(btn) btn.innerHTML='&#9728; Light Mode';
+  }
+  if(!hadSave||!st.name){
+    showNameModal(true);
+  }
+  goDash();
+})();
 </script>
 </body></html>
